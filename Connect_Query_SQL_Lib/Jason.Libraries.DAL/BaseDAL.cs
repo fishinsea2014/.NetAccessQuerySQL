@@ -33,14 +33,18 @@ namespace Jason.Libraries.DAL
                 SqlCommand command = new SqlCommand(sql, conn);
                 conn.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read()) // Means get data from database, start reading
-                {
-                    foreach (var prop in type.GetProperties())
-                    {
-                        prop.SetValue(t, reader[prop.Name] is DBNull? null : reader[prop.Name] )
-                            ;
-                    }
-                }
+                List<T> list = this.ReaderToList<T>(reader);
+                //t =  list !=null && list.Count>0 ? list[0] : null;
+                t = list.FirstOrDefault();
+
+                //if (reader.Read()) // Means get data from database, start reading
+                //{
+                //    foreach (var prop in type.GetProperties())
+                //    {
+                //        prop.SetValue(t, reader[prop.Name] is DBNull? null : reader[prop.Name] )
+                //            ;
+                //    }
+                //}
             }
             return t;
         }
@@ -59,20 +63,31 @@ namespace Jason.Libraries.DAL
                 SqlCommand command = new SqlCommand(sql, conn);
                 conn.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                
-                while (reader.Read()) // Means get data from database, start reading
-                {
-                    
-                    T t = (T)Activator.CreateInstance(type);
-                    foreach (var prop in type.GetProperties())
-                    {
-                        prop.SetValue(t, reader[prop.Name] is DBNull ? null : reader[prop.Name])
-                            ;
-                    }
-                    list.Add(t);
-                }
+                list = this.ReaderToList<T>(reader);
             }
             return list;
         }
+        #region PrivateMethod
+        private List<T> ReaderToList<T>(SqlDataReader reader) where T : BaseModel
+        {
+            List<T> list = new List<T>();
+            while (reader.Read()) // Means get data from database, start reading
+            {
+                Type type = typeof(T);
+                T t = (T)Activator.CreateInstance(type);
+                foreach (var prop in type.GetProperties())
+                {
+                    prop.SetValue(t, reader[prop.Name] is DBNull ? null : reader[prop.Name])
+                        ;
+                }
+
+                //TODO : Enum and GUID type.
+                list.Add(t);
+            }
+            return list;
+
+        }
+
+        #endregion
     }
 }
