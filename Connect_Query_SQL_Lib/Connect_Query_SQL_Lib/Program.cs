@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Jason.Libraries.DAL;
+using Jason.Libraries.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -15,6 +17,8 @@ namespace Connect_Query_SQL_Lib
             try
             {
                 Console.WriteLine("===Start Project===");
+                BaseDAL baseDAL = new BaseDAL();
+                Company company = baseDAL.Find<Company>(1002);
 
             }
             catch (Exception ex)

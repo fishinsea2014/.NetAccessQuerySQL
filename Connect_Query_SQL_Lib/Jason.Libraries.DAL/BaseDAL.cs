@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Jason.Libraries.DAL
 {
     //Basic data access layer
-    class BaseDAL
+    public class BaseDAL
     {
         /// <summary>
         /// 
@@ -24,7 +24,7 @@ namespace Jason.Libraries.DAL
             Type type = typeof(T);
             //Generate a string like"[property name1], [property name2] ..."
             string columnString = string.Join(",", type.GetProperties().Select(p => $"[{p.Name}]"));
-            string sql = $"SELECT {0} FROM [{type.Name}] WHERE Id={id}";  //Must us [User] instead of User table
+            string sql = $"SELECT {columnString} FROM [{type.Name}] WHERE Id={id}";  //Must us [User] instead of User table
             T t = (T) Activator.CreateInstance(type);
 
             //Using can release the connection at the end of the segment.
@@ -41,7 +41,7 @@ namespace Jason.Libraries.DAL
                     }
                 }
             }
-            return default (T);
+            return t;
         }
     }
 }
