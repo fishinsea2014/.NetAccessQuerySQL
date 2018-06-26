@@ -41,7 +41,7 @@ namespace Jason.Libraries.DAL
                     }
                 }
             }
-            return default ( T );
+            return default (T);
         }
     }
 }

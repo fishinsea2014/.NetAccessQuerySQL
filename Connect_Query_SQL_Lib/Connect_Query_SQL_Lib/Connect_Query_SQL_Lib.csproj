@@ -51,5 +51,23 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jason.FrameWork\Jason.FrameWork.csproj">
+      <Project>{b9a5b658-87b1-4a22-88de-6b612127b7ab}</Project>
+      <Name>Jason.FrameWork</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jason.Libraries.DAL\Jason.Libraries.DAL.csproj">
+      <Project>{380e739c-6746-4467-ba64-0e13aa1c4f5e}</Project>
+      <Name>Jason.Libraries.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jason.Libraries.IDAL\Jason.Libraries.IDAL.csproj">
+      <Project>{7dbab491-9084-45a9-b851-7b0085912c6c}</Project>
+      <Name>Jason.Libraries.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jason.Libraries.Model\Jason.Libraries.Model.csproj">
+      <Project>{f2e1763e-662d-4403-a4b9-a7288521cabf}</Project>
+      <Name>Jason.Libraries.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
