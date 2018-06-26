@@ -19,6 +19,7 @@ namespace Connect_Query_SQL_Lib
                 Console.WriteLine("===Start Project===");
                 BaseDAL baseDAL = new BaseDAL();
                 Company company = baseDAL.Find<Company>(1002);
+                List<Company> listCompanies = baseDAL.FindAll<Company>();
 
             }
             catch (Exception ex)
