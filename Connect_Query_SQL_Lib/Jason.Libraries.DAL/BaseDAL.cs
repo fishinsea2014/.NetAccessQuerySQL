@@ -37,7 +37,8 @@ namespace Jason.Libraries.DAL
                 {
                     foreach (var prop in type.GetProperties())
                     {
-                        prop.SetValue(t, reader[prop.Name]);
+                        prop.SetValue(t, reader[prop.Name] is DBNull? null : reader[prop.Name] )
+                            ;
                     }
                 }
             }
