@@ -20,7 +20,10 @@ namespace Jason.Libraries.DAL
 
         public static string FindSqlStr = null;
         public static string FindAllSqlStr = null;
+<<<<<<< HEAD
         //TODO Add delete, update, insert...
+=======
+>>>>>>> GenericCache
 
     }
 }

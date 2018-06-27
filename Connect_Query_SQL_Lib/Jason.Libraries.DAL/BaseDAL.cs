@@ -24,14 +24,21 @@ namespace Jason.Libraries.DAL
         public T Find<T>(int id) where T:BaseModel //The constraint is to ensure the right reference, int id.
         {
             Type type = typeof(T);
+<<<<<<< HEAD
 
             //Encapulste in TSqlHelper.
+=======
+>>>>>>> GenericCache
             ////Generate a string like"[property name1], [property name2] ..."
             //string columnString = string.Join(",", type.GetProperties().Select(p => $"[{p.GetColumnName()}]"));
             //string sql = $"SELECT {columnString} FROM [{type.Name}] WHERE Id={id}";  //Must us [User] instead of User table
             string sql = $"{TSqlHelper<T>.FindSqlStr} {id};";
+<<<<<<< HEAD
             //T t = (T) Activator.CreateInstance(type);
             T t = null;
+=======
+            T t = (T) Activator.CreateInstance(type);
+>>>>>>> GenericCache
 
             //Using can release the connection at the end of the segment.
             using (SqlConnection conn = new SqlConnection(StaticContants.SqlServerConnString))
