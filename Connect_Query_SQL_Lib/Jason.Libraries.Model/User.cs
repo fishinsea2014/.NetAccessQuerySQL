@@ -26,7 +26,7 @@ namespace Jason.Libraries.Model
 
         //public int State { get; set; }
 
-            //Mapping to the state column in database.
+        //Mapping to the state column in database.
         [columnAttribute("state")]
         public int Status { get; set; }
 

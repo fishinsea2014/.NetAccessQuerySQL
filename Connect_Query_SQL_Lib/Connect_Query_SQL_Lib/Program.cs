@@ -18,12 +18,17 @@ namespace Connect_Query_SQL_Lib
             {
                 Console.WriteLine("===Start Project===");
                 BaseDAL baseDAL = new BaseDAL();
-                //Company company = baseDAL.Find<Company>(1002);
-                //List<Company> listCompanies = baseDAL.FindAll<Company>();
+                Company company = baseDAL.Find<Company>(1002);
+                List<Company> listCompanies = baseDAL.FindAll<Company>();
 
-                User user = baseDAL.Find<User>(1);
-                List<User> list = baseDAL.FindAll<User>();
-                Console.Read();
+                //User user = baseDAL.Find<User>(1);
+                //List<User> list = baseDAL.FindAll<User>();
+
+                company.Name = "Vodafone";
+                baseDAL.Update<Company>(company);
+
+
+                //Console.Read();
 
 
             }
@@ -35,6 +40,11 @@ namespace Connect_Query_SQL_Lib
             }
 
             Console.Read();
+        }
+
+        private static void Show<T> (T t)
+        {
+            //TODO show an object.
         }
     }
 }

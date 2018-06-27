@@ -90,6 +90,28 @@ namespace Jason.Libraries.DAL
 
         }
 
+        public void Update<T> (T t) where T : BaseModel
+        {
+            Type type = typeof(T);
+            var propArr = type.GetProperties().Where(p => !p.Name.Equals("Id"));
+            string updateStr = string.Join(",", propArr.Select(p =>$"[{p.GetColumnName()}] = @{p.GetColumnName()}"));
+            var parameters = propArr.Select(p => new SqlParameter($"@{p.GetColumnName()}", p.GetValue(t) ?? DBNull.Value)).ToArray();
+            //var parameters = propArr.Select(p => new SqlParameter($"@{p.GetColumnName()}", p.GetValue(t) ?? DBNull.Value)).ToArray();
+
+            //Have to add an argument in SET to handle the "".
+            string sql = $"UPDATE {type.Name} SET {updateStr} WHERE Id={t.Id}";
+
+            using (SqlConnection conn = new SqlConnection(StaticContants.SqlServerConnString))
+            {
+                SqlCommand command = new SqlCommand(sql, conn);
+                command.Parameters.AddRange(parameters);
+                conn.Open();
+                int iResult = command.ExecuteNonQuery();
+                if (iResult == 0) throw new Exception("The data for update is not exist.");
+            }
+
+        }
+
         #endregion
     }
 }
