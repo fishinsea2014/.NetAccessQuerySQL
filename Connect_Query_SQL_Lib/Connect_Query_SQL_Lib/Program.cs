@@ -18,8 +18,13 @@ namespace Connect_Query_SQL_Lib
             {
                 Console.WriteLine("===Start Project===");
                 BaseDAL baseDAL = new BaseDAL();
-                Company company = baseDAL.Find<Company>(1002);
-                List<Company> listCompanies = baseDAL.FindAll<Company>();
+                //Company company = baseDAL.Find<Company>(1002);
+                //List<Company> listCompanies = baseDAL.FindAll<Company>();
+
+                User user = baseDAL.Find<User>(1);
+                List<User> list = baseDAL.FindAll<User>();
+                Console.Read();
+
 
             }
             catch (Exception ex)

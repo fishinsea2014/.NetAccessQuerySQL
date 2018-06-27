@@ -1,4 +1,5 @@
 ﻿using Jason.FrameWork;
+using Jason.FrameWork.MappingExtend;
 using Jason.FrameWork.Model;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace Jason.Libraries.DAL
         {
             Type type = typeof(T);
             //Generate a string like"[property name1], [property name2] ..."
-            string columnString = string.Join(",", type.GetProperties().Select(p => $"[{p.Name}]"));
+            string columnString = string.Join(",", type.GetProperties().Select(p => $"[{p.GetColumnName()}]"));
             string sql = $"SELECT {columnString} FROM [{type.Name}] WHERE Id={id}";  //Must us [User] instead of User table
             T t = (T) Activator.CreateInstance(type);
 
@@ -53,7 +54,7 @@ namespace Jason.Libraries.DAL
         {
             Type type = typeof(T);
             //Generate a string like"[property name1], [property name2] ..."
-            string columnString = string.Join(",", type.GetProperties().Select(p => $"[{p.Name}]"));
+            string columnString = string.Join(",", type.GetProperties().Select(p => $"[{p.GetColumnName()}]"));
             string sql = $"SELECT {columnString} FROM [{type.Name}]";  //Must us [User] instead of User table
             List<T> list = new List<T>();
 
@@ -77,8 +78,9 @@ namespace Jason.Libraries.DAL
                 T t = (T)Activator.CreateInstance(type);
                 foreach (var prop in type.GetProperties())
                 {
-                    prop.SetValue(t, reader[prop.Name] is DBNull ? null : reader[prop.Name])
-                        ;
+                    object oValue = reader[prop.GetColumnName()];
+                    if (oValue is DBNull) oValue = null;
+                    prop.SetValue(t, oValue);
                 }
 
                 //TODO : Enum and GUID type.
