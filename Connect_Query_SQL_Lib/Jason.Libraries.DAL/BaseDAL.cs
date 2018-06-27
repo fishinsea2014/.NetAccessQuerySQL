@@ -24,10 +24,14 @@ namespace Jason.Libraries.DAL
         public T Find<T>(int id) where T:BaseModel //The constraint is to ensure the right reference, int id.
         {
             Type type = typeof(T);
-            //Generate a string like"[property name1], [property name2] ..."
-            string columnString = string.Join(",", type.GetProperties().Select(p => $"[{p.GetColumnName()}]"));
-            string sql = $"SELECT {columnString} FROM [{type.Name}] WHERE Id={id}";  //Must us [User] instead of User table
-            T t = (T) Activator.CreateInstance(type);
+
+            //Encapulste in TSqlHelper.
+            ////Generate a string like"[property name1], [property name2] ..."
+            //string columnString = string.Join(",", type.GetProperties().Select(p => $"[{p.GetColumnName()}]"));
+            //string sql = $"SELECT {columnString} FROM [{type.Name}] WHERE Id={id}";  //Must us [User] instead of User table
+            string sql = $"{TSqlHelper<T>.FindSqlStr} {id};";
+            //T t = (T) Activator.CreateInstance(type);
+            T t = null;
 
             //Using can release the connection at the end of the segment.
             using (SqlConnection conn = new SqlConnection(StaticContants.SqlServerConnString))
@@ -53,10 +57,10 @@ namespace Jason.Libraries.DAL
 
         public List<T> FindAll<T>() where T:BaseModel
         {
-            Type type = typeof(T);
-            //Generate a string like"[property name1], [property name2] ..."
-            string columnString = string.Join(",", type.GetProperties().Select(p => $"[{p.GetColumnName()}]"));
-            string sql = $"SELECT {columnString} FROM [{type.Name}]";  //Must us [User] instead of User table
+            //Type type = typeof(T);
+            //string columnString = string.Join(",", type.GetProperties().Select(p => $"[{p.GetColumnName()}]"));
+            //string sql = $"SELECT {columnString} FROM [{type.Name}]";  //Must us [User] instead of User table
+            string sql = TSqlHelper<T>.FindAllSqlStr;
             List<T> list = new List<T>();
 
             //Using can release the connection at the end of the segment.
