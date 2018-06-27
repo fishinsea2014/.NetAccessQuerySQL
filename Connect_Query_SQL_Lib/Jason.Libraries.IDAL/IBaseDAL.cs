@@ -13,6 +13,12 @@ namespace Jason.Libraries.IDAL
     public interface IBaseDAL
     {
         //find method must has int id.
-        T find<T>(int id) where T : BaseModel;
+        T Find<T>(int id) where T : BaseModel;
+
+        List<T> FindAll<T>() where T : BaseModel;
+
+        void Update<T> (T t) where T : BaseModel;
+
+        
     }
 }

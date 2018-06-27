@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jason.Libraries.IDAL", "Jas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jason.Libraries.Model", "Jason.Libraries.Model\Jason.Libraries.Model.csproj", "{F2E1763E-662D-4403-A4B9-A7288521CABF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jason.Libraries.Factory", "Jason.Libraries.Factory\Jason.Libraries.Factory.csproj", "{3DAF20AC-5B51-4960-A4BE-BA32960E00EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F2E1763E-662D-4403-A4B9-A7288521CABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2E1763E-662D-4403-A4B9-A7288521CABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2E1763E-662D-4403-A4B9-A7288521CABF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DAF20AC-5B51-4960-A4BE-BA32960E00EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DAF20AC-5B51-4960-A4BE-BA32960E00EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DAF20AC-5B51-4960-A4BE-BA32960E00EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DAF20AC-5B51-4960-A4BE-BA32960E00EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

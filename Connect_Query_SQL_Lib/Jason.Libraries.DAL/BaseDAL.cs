@@ -1,6 +1,7 @@
 ﻿using Jason.FrameWork;
 using Jason.FrameWork.MappingExtend;
 using Jason.FrameWork.Model;
+using Jason.Libraries.IDAL;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace Jason.Libraries.DAL
 {
     //Basic data access layer
-    public class BaseDAL
+    public class BaseDAL : IBaseDAL
     {
         /// <summary>
         /// 

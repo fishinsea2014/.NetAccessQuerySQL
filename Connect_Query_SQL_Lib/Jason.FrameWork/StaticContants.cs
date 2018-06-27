@@ -14,6 +14,12 @@ namespace Jason.FrameWork
     public class StaticContants
     {
         public static string SqlServerConnString = ConfigurationManager.ConnectionStrings["Customers"].ConnectionString;
-              
+
+
+        private static string DALTypeDll = ConfigurationManager.AppSettings["DALTypeDll"];
+        public static string DALDllName = DALTypeDll.Split(',')[1];
+        public static string DALTypeName = DALTypeDll.Split(',')[0];
+
+
     }
 }

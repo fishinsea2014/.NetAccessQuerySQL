@@ -1,4 +1,6 @@
 ﻿using Jason.Libraries.DAL;
+using Jason.Libraries.Factory;
+using Jason.Libraries.IDAL;
 using Jason.Libraries.Model;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,9 @@ namespace Connect_Query_SQL_Lib
             try
             {
                 Console.WriteLine("===Start Project===");
-                BaseDAL baseDAL = new BaseDAL();
+                
+                //IBaseDAL baseDAL = new BaseDAL();
+                IBaseDAL baseDAL = DALFactory.CreateInstance();
                 Company company = baseDAL.Find<Company>(1002);
                 List<Company> listCompanies = baseDAL.FindAll<Company>();
 

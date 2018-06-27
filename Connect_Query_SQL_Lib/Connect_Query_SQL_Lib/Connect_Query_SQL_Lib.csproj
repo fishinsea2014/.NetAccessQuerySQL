@@ -60,6 +60,10 @@
       <Project>{380e739c-6746-4467-ba64-0e13aa1c4f5e}</Project>
       <Name>Jason.Libraries.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Jason.Libraries.Factory\Jason.Libraries.Factory.csproj">
+      <Project>{3DAF20AC-5B51-4960-A4BE-BA32960E00EE}</Project>
+      <Name>Jason.Libraries.Factory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Jason.Libraries.IDAL\Jason.Libraries.IDAL.csproj">
       <Project>{7dbab491-9084-45a9-b851-7b0085912c6c}</Project>
       <Name>Jason.Libraries.IDAL</Name>
