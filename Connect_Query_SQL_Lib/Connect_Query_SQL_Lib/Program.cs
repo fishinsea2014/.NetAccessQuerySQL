@@ -24,6 +24,8 @@ namespace Connect_Query_SQL_Lib
                 //IBaseDAL baseDAL = new BaseDAL();
                 IBaseDAL baseDAL = DALFactory.CreateInstance();
                 Company company = baseDAL.Find<Company>(1002);
+                Company company1 = baseDAL.Find<Company>(1);
+                Company company2 = baseDAL.Find<Company>(8);
                 List<Company> listCompanies = baseDAL.FindAll<Company>();
 
                 //User user = baseDAL.Find<User>(1);
