@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Jason.FrameWork.MappingExtend.Validate;
+using Jason.FrameWork.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -19,6 +21,27 @@ namespace Jason.FrameWork.MappingExtend
             }
 
             return prop.Name;
+        }
+
+        public static bool Validate<T>(this T tModel) where T : BaseModel
+        {
+            Type type = tModel.GetType();
+            foreach (var prop in type.GetProperties())
+            {
+                if (prop.IsDefined(typeof(AbstractValidateAttributes),true))
+                {
+                    object[] attributeArray = prop.GetCustomAttributes(typeof(AbstractValidateAttributes), true);
+                    foreach (AbstractValidateAttributes attribute in attributeArray)
+                    {
+                        if (!attribute.Validate(prop.GetValue(tModel)))
+                        {
+                            return false;
+                            //throw new Exception($"{prop.Name} 's value-{prop.GetValue(tModel)} is incorrect."); //Tips where is the error.
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
     }

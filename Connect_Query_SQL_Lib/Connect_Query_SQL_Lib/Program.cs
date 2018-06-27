@@ -1,4 +1,5 @@
 ﻿//using Jason.Libraries.DAL;
+using Jason.FrameWork.MappingExtend;
 using Jason.Libraries.Factory;
 using Jason.Libraries.IDAL;
 using Jason.Libraries.Model;
@@ -28,11 +29,12 @@ namespace Connect_Query_SQL_Lib
                 //User user = baseDAL.Find<User>(1);
                 //List<User> list = baseDAL.FindAll<User>();
 
-                company.Name = "Vodafone";
+                company.Name = "Vodafoneasdasdf";
                 baseDAL.Update<Company>(company);
+                bool isRightName=company.Validate();
 
 
-                //Console.Read();
+                Console.Read();
 
 
             }

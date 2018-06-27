@@ -1,4 +1,5 @@
-﻿using Jason.FrameWork.Model;
+﻿using Jason.FrameWork.MappingExtend.Validate;
+using Jason.FrameWork.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace Jason.Libraries.Model
 {
     public class Company : BaseModel
     {
+        [Length(3,10)]
         public string Name { get; set; }
 
         public int CreatorId { get; set; }

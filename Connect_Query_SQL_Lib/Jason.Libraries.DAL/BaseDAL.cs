@@ -93,6 +93,7 @@ namespace Jason.Libraries.DAL
 
         public void Update<T> (T t) where T : BaseModel
         {
+            if (!t.Validate<T>()) throw new Exception("Data is incorrect.");
             Type type = typeof(T);
             var propArr = type.GetProperties().Where(p => !p.Name.Equals("Id"));
             string updateStr = string.Join(",", propArr.Select(p =>$"[{p.GetColumnName()}] = @{p.GetColumnName()}"));
