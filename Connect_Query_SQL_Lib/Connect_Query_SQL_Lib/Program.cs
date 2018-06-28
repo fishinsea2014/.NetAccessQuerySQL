@@ -23,17 +23,17 @@ namespace Connect_Query_SQL_Lib
                 
                 //IBaseDAL baseDAL = new BaseDAL();
                 IBaseDAL baseDAL = DALFactory.CreateInstance();
-                Company company = baseDAL.Find<Company>(1002);
-                Company company1 = baseDAL.Find<Company>(1);
-                Company company2 = baseDAL.Find<Company>(8);
-                List<Company> listCompanies = baseDAL.FindAll<Company>();
+                Company company = baseDAL.Find<Company>(1);
+                //Company company1 = baseDAL.Find<Company>(1);
+                //Company company2 = baseDAL.Find<Company>(1);
+                //List<Company> listCompanies = baseDAL.FindAll<Company>();
 
                 //User user = baseDAL.Find<User>(1);
                 //List<User> list = baseDAL.FindAll<User>();
 
-                company.Name = "Vodafoneasdasdf";
+                company.Name = "Vodafone1";
                 baseDAL.Update<Company>(company);
-                bool isRightName=company.Validate();
+                //bool isRightName=company.Validate();
 
 
                 Console.Read();

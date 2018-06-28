@@ -11,7 +11,7 @@ namespace Jason.FrameWork
     /// <summary>
     ///Store the static contant in the project.
     /// </summary>
-    public class StaticContants
+    public class StaticContant
     {
         public static string SqlServerConnString = ConfigurationManager.ConnectionStrings["Customers"].ConnectionString;
 

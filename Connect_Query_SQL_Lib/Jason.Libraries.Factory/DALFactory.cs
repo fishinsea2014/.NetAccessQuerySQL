@@ -16,8 +16,8 @@ namespace Jason.Libraries.Factory
         /// </summary>
         static DALFactory()
         {
-            Assembly assembly = Assembly.Load(StaticContants.DALDllName);
-            DALType = assembly.GetType(StaticContants.DALTypeName);
+            Assembly assembly = Assembly.Load(StaticContant.DALDllName);
+            DALType = assembly.GetType(StaticContant.DALTypeName);
         }
 
         private static Type DALType = null;
