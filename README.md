@@ -17,6 +17,7 @@
   5. Use generic to implement accessing database with entity instance, e.g. insert, update, delete,find
   6. Abstract the data access layer by the way of simple factory + configuration file + reflection, for the data access layer to use.
   7. Validating data in entity instances, e.g. format of mobile, email, length of user name. Sometimes there are multiple validation to a field or property.
+  8. Use delegate to encapsulate SQL server connection and query actions.
    
   
   Appendix: Sql script:
